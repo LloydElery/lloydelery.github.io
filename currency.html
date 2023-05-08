@@ -5,10 +5,37 @@
             Currency Exchange
         </title>
         <script>
-            
+            document.addEventListener('DOMContentLoaded', function() {
+
+                document.querySelector('form').onsubmit = function() {
+
+          
+                fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies')
+                .then(response => response.json())
+                .then(data => {
+                    const currency = document.querySelector('#currency').value.toUpperCase();
+                    const rate = data.rates[currency];
+                    if (rate !== undefined) {
+                        document.querySelector('#result').innerHTML = `1 USD is equal to ${rate.toFixed(3)} EUR.`;
+                    } else {
+                        document.querySelector('#result').innerHTML = 'Invalid Currency.';
+                    }
+                })
+                .catch(error => {
+                    console.log('Error', error);
+                };)
+                return false;
+            }
+        });
         </script>
     </head>
     <body>
+        <form>
+            <input id="currency" placeholder="Currency" type="text">
+            <input type="submit" value="Convert">
+        </form>
+        <div>
 
+        </div>
     </body>
 </html>
