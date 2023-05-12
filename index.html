@@ -6,14 +6,41 @@
         </title>
         <style>
 
+            h1 {
+                background-color: bisque;
+                font-size: 20px;
+                font-family: sans-serif;
+                border: 1px; border-color: aliceblue;
+                text-align: center;
+                padding: 50px;
+            }
+
             @keyframes hide {
                 0% {
                     opacity: 1;
+                    height: 100%;
+                    line-height: 100%;
+                    padding: 20px;
+                    margin-bottom: 10px;
+                }
+
+                75% {
+                    opacity: 0;
+                    height: 100%;
+                    line-height: 100%;
+                    padding: 20px;
+                    margin-bottom: 10px;
                 }
 
                 100% {
                     opacity: 0;
+                    height: 0px;
+                    line-height: 0px;
+                    padding: 0px;
+                    margin-bottom: 0px;
                 }
+
+
             }
 
             .hide {
@@ -66,7 +93,7 @@
                 counter = end + 1;
 
                 // Get new posts and add posts
-                fetch(`/posts?start=${start}&end=${ens}`)
+                fetch(`/posts?start=${start}&end=${end}`)
                 .then(response => response.json())
                 .then(data => {
                     data.posts.forEach(add_post);
@@ -87,7 +114,28 @@
 
         </script>
     </head>
-    <body>
-        <link src="post.html" ></link>
-    </body>
-</html>
+        <body>
+         <h1>Post 1</h1>
+         <h1>Post 2</h1>
+         <h1>Post 3</h1>
+         <h1>Post 4</h1>
+         <h1>Post 5</h1>
+         <h1>Post 6</h1>
+         <h1>Post 7</h1>
+         <h1>Post 8</h1>
+         <h1>Post 9</h1>
+         <h1>Post 10</h1>
+         <h1>Post 11</h1>
+         <h1>Post 12</h1>
+         <h1>Post 13</h1>
+         <h1>Post 14</h1>
+         <h1>Post 15</h1>
+         <h1>Post 16</h1>
+         <h1>Post 17</h1>
+         <h1>Post 18</h1>
+         <h1>Post 19</h1>
+         <h1>Post 20</h1>
+         <h1>Post 21</h1>
+         <h1>Post 22</h1>
+        </body>
+    </html>
