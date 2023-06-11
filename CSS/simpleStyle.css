@@ -1,0 +1,526 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*  ---------------------------------------BODY TAGS---------------------------------------  */
+/* body */
+body {
+  margin: 0;
+}
+/* body | SECTION */
+section {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100dvh;
+  max-width: 890px;
+  margin: auto;
+}
+strong,
+em {
+  color: blueviolet;
+  opacity: 80%;
+  text-shadow: -1px 1px 2px #000, 1px 2px 10px #000;
+  margin-bottom: -16px;
+}
+/* Navigation bar list */
+li {
+  list-style: none;
+}
+
+/*  ---------------------------------------HEADER BUTTONS  */
+nav {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
+  gap: 2rem;
+  position: fixed;
+}
+
+/*  ---------------------------------------.CLASS TAGS---------------------------------------  */
+
+/*  ---------------------------------------NAVBAR */
+/* Website Name & Page Name */
+.logo {
+  display: flex;
+  align-items: inherit;
+  gap: 2rem;
+}
+.navbar {
+  width: 100%;
+  height: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar .toggle-button {
+  color: var(--white);
+  font-size: 1rem;
+  cursor: pointer;
+  display: none;
+}
+.toggle-button:hover {
+  scale: 1.04;
+}
+.toggle-button:active {
+  color: inherit;
+  scale: 0.96;
+}
+.navbar-name {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.navbar h1 {
+  color: var(--white);
+  font-family: "quicksand", sans-serif;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-left: 110px;
+}
+.navbar h1:hover {
+  scale: 1.02;
+  scroll-snap-align: 2;
+}
+.navbar h1:active {
+  scale: 0.98;
+}
+.navbar img {
+  width: 10dvh;
+  position: fixed;
+}
+.navbar img:hover {
+  scale: 1.15;
+}
+
+/*  ---------------------------------------HEADER 'MIDJOURNEY' */
+
+.midjourney {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  font-family: "prompt";
+}
+.midjourney h1 {
+  background: linear-gradient(to right, rgb(217 142 31), rgb(197 43 107));
+  margin: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* animation */
+  animation: fadeIn 1s ease-in 0s 1 forwards;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/*  ---------------------------------------STICKERS  */
+
+.stickers {
+  display: flex;
+  justify-content: center;
+  font-size: 1.23rem;
+  font-family: "Kanit", monospace;
+}
+.stickers h1 {
+  background: linear-gradient(
+    to right,
+    rgb(251 251 251 / 84%),
+    rgb(233 199 119 / 60%)
+  );
+  margin: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* animation */
+  animation: fadeIn 1s ease-in 0s 1 forwards;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/*  ---------------------------------------HEADER  */
+.people {
+  display: flex;
+  justify-content: center;
+  font-size: 1.23rem;
+  font-family: "Kanit", monospace;
+}
+.people h1 {
+  background: linear-gradient(
+    to right,
+    rgba(63, 56, 45, 0.719),
+    rgba(216, 157, 181, 0.596)
+  );
+  margin: inherit;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* animation */
+  animation: fadeIn 1s ease-in 0s 1 forwards;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/*  ---------------------------------------CAROUSEL  */
+
+.carousel {
+  width: 100%;
+  height: 67dvh;
+  position: relative;
+}
+.carousel > ul {
+  margin: 0;
+  padding: 0;
+  position: none;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: 200ms opacity ease-in-out;
+  transition-delay: 200ms;
+}
+.slide > img {
+  display: block;
+  width: 100%;
+  height: 68%;
+  object-fit: contain;
+}
+.slide[data-active] {
+  opacity: 1;
+  z-index: 1;
+}
+.card {
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(
+    162deg,
+    rgb(182, 73, 233),
+    rgb(211, 130, 38)
+  );
+  border-radius: 20px;
+  padding: 0.1em;
+  transition: all 0.3s;
+  max-width: 22rem;
+  max-height: 160px;
+  margin: auto;
+  width: fit-content;
+}
+.text {
+  background-color: #1a1a1a;
+  border-radius: 1px;
+  transition: all 0.2s;
+  border-radius: inherit;
+}
+.text h4 {
+  display: flex;
+  width: max-content;
+  justify-content: flex-start;
+  background: linear-gradient(to right, rgb(182, 73, 233), rgb(211, 130, 38));
+  margin: 2vh;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeIn 2s ease-in 0s 1 forwards;
+  pointer-events: none;
+  opacity: 0;
+  font-size: 1.618rem;
+}
+.text p {
+  display: -webkit-box;
+  /* flex-wrap: wrap; */
+  border-top: 1px solid rgb(182, 73, 233);
+  overflow: hidden;
+  color: white;
+  margin: 2dvh;
+  max-width: 100dvh;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card:hover {
+  box-shadow: 0px 0px 30px 1px rgb(182, 73, 233);
+}
+.carousel-button {
+  z-index: 2;
+  border: none;
+  font-size: 2rem;
+  color: var(--white);
+  border-radius: 0.25rem;
+  padding: 0 0.5rem;
+  top: 11rem;
+}
+.carousel-button:hover,
+.carousel-button:focus {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.carousel-button:focus {
+  color: rgba(0, 0, 0, 0.603);
+}
+.carousel-button.left {
+  position: absolute;
+  margin: auto;
+  background-color: transparent;
+  left: 2%;
+}
+.carousel-button.right {
+  position: absolute;
+  margin: auto;
+  background-color: transparent;
+  right: 2%;
+}
+
+/*  ---------------------------------------NAVBAR DROPDOWN  */
+/* Forground */
+.dropdown-card {
+  background: rgb(140, 140, 140);
+  transition: all 0.3s;
+  width: 125px;
+  height: 200px;
+  margin: 2px 2px;
+}
+
+/* Background */
+.dropdown-menu {
+  z-index: 1;
+  position: absolute;
+  right: 2rem;
+  height: 0;
+  width: fit-content;
+  background-image: linear-gradient(
+    162deg,
+    rgb(182, 73, 233),
+    rgb(211, 130, 38)
+  );
+  overflow: hidden;
+  transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s;
+}
+.dropdown-menu.open {
+  height: 204px;
+  width: 129px;
+  z-index: 1;
+}
+.dropdown-menu li {
+  padding: 9px;
+}
+.dropdown-menu .action-button {
+  justify-content: center;
+  border-radius: 0px;
+}
+.action-button {
+  outline: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: scale 0.2 ease;
+  color: var(--white);
+  border: 1px solid orange;
+  margin: 0px;
+  padding: 7px;
+}
+.action-button:hover {
+  color: var(--yellow);
+  opacity: 100%;
+}
+
+.action-button:active {
+  opacity: 50%;
+}
+
+/*  ---------------------------------------STICKY SCROLL HEADER  */
+.scroll-down header img {
+  transform: translate3d(0, -100%, 0);
+}
+.scroll-up header img {
+  animation: fadeIn ease-in 1s forwards;
+}
+.scroll-down nav {
+  transform: translate3d(0, -100%, 0);
+  display: none;
+}
+.scroll-up nav {
+  animation: fadeIn ease-in 1s forwards;
+}
+
+/* ---------------------------------------ON SCROLL / INTERSECTIONOBSERVE */
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1s;
+}
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+/*  ---------------------------------------#ID TAGS---------------------------------------  */
+/* Body.topBar | Header */
+#topBar {
+  position: relative;
+  color: var(--headerBackground);
+  font-family: "quicksand", sans-serif;
+  margin: 2dvh;
+  z-index: 9999;
+  transition: all 300ms ease-in-out;
+}
+
+/* The action Button 'Buy Design' */
+#buyButton {
+  background-color: var(--yellow);
+  color: var(--gray);
+  border: 1px solid var(--white);
+}
+#buyButton:hover {
+  opacity: 100%;
+  color: var(--white);
+  scale: 1.01;
+}
+#buyButton:active {
+  color: var(--white);
+  opacity: 50%;
+}
+
+/* CTA Button | Header */
+#cta {
+  background-color: var(--yellow);
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--black);
+  opacity: 70%;
+  transition: scale 0.2 ease;
+  outline-style: solid;
+  outline-width: thin;
+}
+#cta:hover {
+  color: var(--black);
+  background-color: var(--yellow);
+  opacity: 90%;
+  outline-style: solid;
+  outline-width: thin;
+}
+#cta:active {
+  opacity: 70%;
+}
+
+/* Button | Carousel | background */
+#background .carousel-button {
+  height: 19rem;
+  margin-top: -7rem;
+  width: 16rem;
+  color: transparent;
+  cursor: pointer;
+}
+#background img {
+  scale: 0.9;
+}
+/*  ---------------------------------------@MEDIA QUERIES---------------------------------------  */
+
+/* ---------------------------------------MinW: 844px */
+/* TEXTBOXES */
+@media (min-width: 844px) {
+  .card {
+    max-width: inherit;
+    scale: 0.79;
+  }
+}
+
+/* ---------------------------------------MaxW: 700px */
+/* DROPDOWN-MENU FOR MOBILE */
+@media (max-width: 740px) {
+  .dropdown-menu.open {
+    height: 3rem;
+    width: 22rem;
+    z-index: 1;
+    right: 0rem;
+    margin-top: 0.5rem;
+  }
+  .dropdown-card {
+    background: rgb(140, 140, 140);
+    transition: all 0.3s;
+    width: 21.78rem;
+    height: 2.75rem;
+    margin: 2px 2px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .action-button {
+    outline: none;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: scale 0.2 ease;
+    color: var(--white);
+    border: 1px solid orange;
+    padding: 0.32rem;
+  }
+  #buyButton {
+    background-color: var(--yellow);
+    color: var(--gray);
+    border: 1px solid var(--white);
+  }
+}
+
+/* ------------------------------------------MaxW: 992px */
+/* Navigation bar -> Responsive */
+@media (max-width: 992px) {
+  .navbar nav,
+  .navbar .action-button {
+    display: none;
+  }
+
+  .navbar .toggle-button {
+    display: block;
+    cursor: pointer;
+  }
+
+  .dropdown-menu {
+    display: block;
+  }
+
+  .scroll-up nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --------------------------------------------MinW: 992px */
+@media (min-width: 992px) {
+  .dropdown-menu.open {
+    display: none;
+  }
+}
+
+/* --------------------------------------------MaxW: 776px */
+/* carousel buttons for background-images */
+@media (max-width: 776px) {
+  #background .carousel-button {
+    margin-top: -6rem;
+    width: 8rem;
+    color: transparent;
+    height: 14rem;
+  }
+}
+
+/* *******************************************ANIMATIONS**************************************** */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,242 +1,438 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <title>
-        focusjuice
-    </title>
+    <!-- **************************************FONTS******************************************* -->
+    <!-- --------------------------------------AWESOME -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- -------------------------------------GOOGLE -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Cherry+Bomb+One|Source+Code+Pro|Quicksand|Flow+Circular|Prompt|Kanit|"
+    />
+
+    <!-- --------------------------------------FAVICON -->
+    <link
+      rel="icon"
+      href="images/TP-sticker-icon_boat.png"
+      type="images/x-icons"
+    />
+
+    <!-- ***********************************SCRIPT***************************************** -->
+    <link rel="stylesheet" type="text/css" href="CSS/simpleStyle.css" />
+    <script src="app.js" defer></script>
+
+    <!-- -----------------------------------TITLE -->
+    <title>My Journey</title>
+
+    <!-- ***********************************STYLE******************************************* -->
     <style>
-        h1 {
-            background-color: bisque;
-            font-size: 20px;
-            font-family: sans-serif;
-            border: 1px;
-            border-color: aliceblue;
-            text-align: center;
-            padding: 50px;
-        }
+      /* RooT */
+      :root {
+        /* Background Color */
+        background-color: rgb(140, 140, 140);
 
-        @keyframes hide {
-            0% {
-                opacity: 1;
-                height: 100%;
-                line-height: 100%;
-                padding: 20px;
-                margin-bottom: 10px;
-            }
+        /* Color pallet */
+        --black: hsla(180, 100%, 1%, 1);
+        --yellow: hsla(42, 100%, 49%, 1);
+        --white: hsla(210, 8%, 95%, 1);
+        --gray: hsla(0, 4%, 43%, 1);
+        --orange: hsla(24, 85%, 65%, 1);
 
-            75% {
-                opacity: 0;
-                height: 100%;
-                line-height: 100%;
-                padding: 20px;
-                margin-bottom: 10px;
-            }
+        --background: rgba(242, 151, 90, 0.575);
+        --headerBackground: rgba(114, 105, 105, 0.562);
 
-            100% {
-                opacity: 0;
-                height: 0px;
-                line-height: 0px;
-                padding: 0px;
-                margin-bottom: 0px;
-            }
+        /* Font´s */
+        font-size: 16px;
+        font-family: 'quicksand', sans-serif;
+      }
+      h2, h3, h4, h5, h6 {
+        font-size: 1.618rem;
+      }
 
+      /* Page Name */
+      h1.websiteName {
+        color: var(--white);
+        font-size: 1rem;
+      }
 
-        }
+      /* Current Page */
+      h1.simple {
+        color: var(--black);
+        font-size: 1rem;
+        outline: solid;
+        outline-width: thin;
+        padding: 3px;
+        text-decoration-line: underline;
+      }
 
-        .hide {
-            float: right;
-        }
+      /* Navigation bar style */
+      a {
+        text-decoration: none;
+        color: var(--white);
+        font-size: 1rem;
+        font-weight: bold;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: baseline;
+        gap: 2rem;
+        outline: none;
+        font-size: 0.8rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: scale 0.2 ease;
+        color: var(--white);
+        border: 1px solid orange;
+        margin: 0px;
+        padding: 7px;
+      }
 
-        .post {
-            background-color: green;
-            padding: 20px;
-            margin-bottom: 10px;
-            animation-name: hide;
+      /* Navigation bar effects */
+      a:hover {
+        background-image: linear-gradient(
+          162deg,
+          rgb(182, 73, 233),
+          rgb(211, 130, 38)
+          );        opacity: 80%;
+      }
 
-        }
+      a:active {
+        color: var(--background);
+        opacity: 100%;
+      }
+
+      /* SPACE */
+      hr {
+        border: none;
+        padding: 10px 0;
+      }
+    
     </style>
+  </head>
+
+  <body>
+    <!-- ---------- TOPBAR / HEADER ---------- -->
+    <header id="topBar">
+      <div class="navbar">
+        <div class="navbar-name">
+          <img src="images/TP-sticker-icon_boat.png" alt="A cartoon sailboat-sticker">
+          <h1>My Journey</a></h1>
+          <nav>
+            <li></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Clean</a></li>
+            <li><a href="#">Chaotic</a></li>
+        </nav>
+        </div>
+        <a href="#" id="cta" class="action-button">Buy Design</a>
+        <div class="toggle-button">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+      </div>
+
+      <!-- DROPDOWN MENU -->
+      <div class="dropdown-menu">
+        <div class="dropdown-card">
+        <li><a href="#" class="action-button">Home</a></li>
+        <li><a href="#" class="action-button">Clean</a></li>
+        <li><a href="#" class="action-button">Chaotic</a></li>
+        <li>
+          <a id="buyButton" href="#" class="action-button">Buy Design</a>
+        </li>
+      </div>
+      </div>
+    </header>
+    <hr />
+
+    <!-- ----- DROPDOWN MENU JAVASCRIPT ----- -->
     <script>
+      const toggleButton = document.querySelector(`.toggle-button`);
+      const toggleButtonIcon = document.querySelector(`.toggle-button i`);
+      const dropDownMenu = document.querySelector(`.dropdown-menu`);
 
-        // Start with first post
-        let counter = 1;
+      toggleButton.onclick = () => {
+        dropDownMenu.classList.toggle(`open`);
+        const isOpen = dropDownMenu.classList.contains(`open`);
 
-        // Load posts, 20 at a time
-        const quantity = 20;
-
-        // When DOM loads, render the first 20 posts.
-        document.addEventListener('DOMContentLoaded', load);
-
-        // activate sequence on scroll
-        window.onscroll = () => {
-            if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-                load();
-            }
-        };
-
-        //hides elements when clicked on the button
-        document.addEventListener('click', event => {
-            const element = event.target;
-            if (element.className === 'hide') {
-                element.parentElement.style.animationPlayState = 'running';
-                element.parentElement.addEventListener('animationend', () => {
-                    element.parentElement.remove();
-                });
-            }
-        });
-
-        // Load next function of posts
-        function load() {
-
-            // Set start and end post numbers, and update counter
-            const start = counter;
-            const end = start + quantity - 1;
-            counter = end + 1;
-
-            // Get new posts and add posts
-            fetch(`/posts?start=${start}&end=${end}`)
-                .then(response => response.json())
-                .then(data => {
-                    data.posts.forEach(add_post);
-                });
-        };
-
-        // Add a new post with given contents to DOM
-        function add_post(contents) {
-
-            // Create new post 
-            const post = document.createElement('div');
-            post.className = 'post';
-            post.innerHTML = contents;
-
-            // Add post to DOM
-            document.querySelector('#posts').append(post);
-        }
-
-
+        toggleButtonIcon.classList = isOpen
+          ? "fa-solid fa-xmark"
+          : "fa-solid fa-bars";
+      };
     </script>
-</head>
 
-<body>
-    <h1>Post #1</h1>
-    <h1>Post #2</h1>
-    <h1>Post #3</h1>
-    <h1>Post #4</h1>
-    <h1>Post #5</h1>
-    <h1>Post #6</h1>
-    <h1>Post #7</h1>
-    <h1>Post #8</h1>
-    <h1>Post #9</h1>
-    <h1>Post #10</h1>
-    <h1>Post #11</h1>
-    <h1>Post #12</h1>
-    <h1>Post #13</h1>
-    <h1>Post #14</h1>
-    <h1>Post #15</h1>
-    <h1>Post #16</h1>
-    <h1>Post #17</h1>
-    <h1>Post #18</h1>
-    <h1>Post #19</h1>
-    <h1>Post #20</h1>
-    <h1>Post #21</h1>
-    <h1>Post #22</h1>
-    <h1>Post #23</h1>
-    <h1>Post #24</h1>
-    <h1>Post #25</h1>
-    <h1>Post #26</h1>
-    <h1>Post #27</h1>
-    <h1>Post #28</h1>
-    <h1>Post #29</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
-    <h1>Post #</h1>
+    <!-- ---------- MIDJOURNEY ---------- -->
+    <header class="midjourney">
+      <h1>Midjourney</h1>
+    </header>
+    <!-- ---------- BODY ---------- -->
+    <!-- CAROUSEL | STICKERS -->
+    <header class="stickers"><h1>Stickers</h1></header>
+    <section class="hidden"  aria-label="Stickers">
+        <div class="carousel" data-carousel>
+          <button class="carousel-button left" data-carousel-button="left">
+            <i class="fa-solid fa-chevron-left"></i></ion-icon>
+          </button>
+          <button class="carousel-button right" data-carousel-button="right">
+            <i class="fa-solid fa-chevron-right"></i></ion-icon>
+          </button>
+        <ul data-slides>
+          <li class="slide" data-active>
+            <img
+              src="images/TP-sticker-icon_colorful lines.png"
+              alt="Sticker #1"
+            />
+            <main class="card">
+              <div class="text">
+              <h4>Rainbow Waves</h4>
+              <p><strong><em>Imagine</em></strong><br> three horizontal squiggle lines in the style of a 2d art sticker button <br><em>--ar 1:1 --ar 16:9 --q 4 --s 300</em></p>
+            </div>
+            </main>
+          </li>
+          <li class="slide">
+            <img
+              src="images/TP-sticker-icon_colorful rgb lightbulb.png"
+              alt="Sticker #2"
+            />
+            <main class="card">
+              <div class="text">
+              <h4>Epic RGB</h4>
+              <p><strong><em>Imagine</em></strong><br> lightbulb art sticker, vector illustration, in the style of colorful rgb light, fluid simplicity, detailed miniatures, realistic usage of light and color, illustration, tumblewave, shaped canvas  <br><em>--ar 1:1 --ar 16:9 --q 4 --s 300</em></p>
+            </div>
+            </main>
+          </li>
+          <li class="slide">
+            <img
+              src="images/TP-sticker-icon_dragon.png"
+              alt="Sticker #3"
+            />
+            <main class="card">
+              <div class="text">
+              <h4>Dragon Waves</h4>
+              <p><strong><em>Imagine</em></strong><br> dragon art sticker, vector illustration, in the style of colorful sea, fluid simplicity, detailed miniatures, realistic usage of light and color, illustration, tumblewave, shaped canvas <br><em>--ar 1:1 --ar 16:9 --q 4 --s 300</em></p>
+            </div>
+            </main>
+          </li>
+          <li class="slide">
+            <img
+              src="images/TP-sticker-icon_jellyfish.png"
+              alt="Sticker #4"
+            />
+            <main class="card">
+              <div class="text">
+              <h4>Psychadelic Jelly</h4>
+              <p><strong><em>Imagine</em></strong><br> jellyfish art sticker, vector illustration, in the style of colorful sea, fluid simplicity, detailed miniatures, realistic usage of light and color, illustration, tumblewave, shaped canvas <br><em>--ar 1:1 --ar 16:9 --q 4 --s 300</em></p>
+            </div>
+            </main>
+          </li>
+          <li class="slide">
+            <img
+              src="images/TP-sticker-icon_sun and mountains.png"
+              alt="Sticker #5"
+            />
+            <main class="card">
+              <div class="text">
+              <h4>Bit Sunrise</h4>
+              <p><strong><em>Imagine</em></strong><br> a simple and clean website button, award-winning design, in the style of 2d art, sticker <br><em>--ar 1:1 --ar 16:9 --q 4 --s 300</em></p>
+            </div>
+            </main>
+          </li>
+          <li class="slide">
+            <img
+              src="images/TP-sticker-icon_boat.png"
+              alt="Sticker #6"
+            />
+            <main class="card">
+              <div class="text">
+              <h4>My Journey</h4>
+              <p><strong><em>Imagine</em></strong><br> a sticker of a stickfigure sail boat, in the style of 2d art <br><em>--ar 1:1 --ar 16:9 --q 4 --s 300</em></p>
+            </div>
+            </main>
+          </li>
+        </ul>
+      </div>
+    </section>
+    
+    <!-- CAROUSEL | BACKGROUND -->
+    <header class="stickers" id="background"><h1>Background</h1></header>
+    <section class="hidden"  aria-label="Stickers" id="background">
+        <div class="carousel" data-carousel>
+          <button class="carousel-button left" data-carousel-button="left">
+            <i class="fa-solid fa-chevron-left"></i></ion-icon>
+          </button>
+          <button class="carousel-button right" data-carousel-button="right">
+            <i class="fa-solid fa-chevron-right"></i></ion-icon>
+          </button>
+        <ul data-slides>
+          <li class="slide" data-active>
+            <img src="images/BG colorful waves, blue and yellow --tile.png" alt="Colorful background image, waves of paint">
+            <main class="card">
+              <div class="text">
+              <h4>Paint the way</h4>
+              <p><strong><em>Imagine</em></strong><br> a seamless website background, in the style of a famous painter<br><em> --tile --chaos 10 --ar 16:9 --q 4 --s 300</em></p>
+            </div>
+            </main>
+          </li>
+          <li class="slide">
+            <img src="images/bg green and white waves --tile.png" alt="A Green and white colorful canvas, waves of smooth paint">
+            <main class="card">
+              <div class="text">
+              <h4>Green brush</h4>
+              <p><strong><em>Imagine</em></strong><br> an abstract digital painting of waves, in the style of white and grey landscapes, light green and dark burgundy, white curves, realistic black palette, nature-inspired abstractions, in the style of a 2d painting<br><em> --tile --chaos 10 --ar 16:9 --q 4 --s 300</em></p>
+            </div>
+            </main>
+          </li>
+          <li class="slide">
+            <img src="images/charcole waves background -tile.jpg" alt="A wide image of black and white monocromatic waves">
+            <main class="card">
+              <div class="text">
+              <h4>Monochrome</h4>
+              <p><strong><em>Imagine</em></strong><br>a gradient seamless charcoal light wave-illustration in the style of a famous painter<br><em> --tile --ar 16:9 --s 200 --q 4 --ar 16:9 --q 4 --s 300</em></p>
+            </div>
+            </main>
+          </li>
+          <li class="slide">
+          <img src="images/BG_16_9_orange and blue pastel lines of poaint.png" alt="Orange and green silk sheets on a peach background">
+            <main class="card">
+              <div class="text">
+              <h4>Silk & Paint</h4>
+              <p><strong><em>Imagine</em></strong><br>a white painting, in the style of muted, minimalist compositions, dark orange and sky-blue, kaja foglio, light pink and dark green, mike campau, antti lovag, fluid simplicity  <br><em>--ar 16:9 --q 4 --s 300</em></p>
+            </div>
+            </main>
+          </li>
+          <li class="slide">
+          <img src="images/bg-white windows like background.png" alt="A white mist in the form of a wave on a white background">
+            <main class="card">
+              <div class="text">
+              <h4>White Mist</h4>
+              <p><strong><em>Imagine</em></strong><br> a light gray website background &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp&nbsp<br><em>--ar 1:1 --ar 16:9 --q 4 --s 300</em></p>
+            </div>
+            </main>
+          </li>
+          <li class="slide">
+<img src="images/bg-blobs and waves orange and bblue.png" alt="A abstract image of blobs and waves in the shape of a tunnle">
+            <main class="card">
+              <div class="text">
+              <h4>Blobs</h4>
+              <p><strong><em>Imagine</em></strong><br> a seamless::2 design a captivating artistic background with an abstract composition that incorporates various shapes and creates a sense of depth. in the style of charcole paintings<br><em> --q 2 --s 300 --ar 16:9</em></p>
+            </div>
+            </main>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-</body>
+    <!-- CAROUSEL | REALISTIC -->
+    <header class="stickers" id="realistic"><h1>Realistic</h1></header>
+    <section class="hidden"  aria-label="Stickers">
+        <div class="carousel" data-carousel>
+          <button class="carousel-button left" data-carousel-button="left">
+            <i class="fa-solid fa-chevron-left"></i></ion-icon>
+          </button>
+          <button class="carousel-button right" data-carousel-button="right">
+            <i class="fa-solid fa-chevron-right"></i></ion-icon>
+          </button>
+        <ul data-slides>
+          <li class="slide" data-active>
+            <img src="images/elephant_eye_realistic_midjourney.png" alt="">
+            <main class="card realistic">
+              <div class="text">
+              <h4>Elephant Eye</h4>
+              <p><strong><em>Imagine</em></strong><br> a closeup image of a elephants eye and ear, photo taken by a famous nature photographer with a Fuji film camera, f2.8, 50mm lens, new realism <br><em>--s 600 --q 4 --seed 0043 --ar 3:4 --v 5 </em></p>
+            </div>
+            </main>
+          </li>
+          <li class="slide">
+            <img src="images/honeycovered_bee.png" alt="">
+            <main class="card realistic">
+              <div class="text">
+              <h4>Honey covered Bee</h4>
+              <p><strong><em>Imagine</em></strong><br> honeybee::2 dripping honey::3, honeycore, macro, DOF   <br><em>--s 200 --seed 0014 --v 4 --q 1 --ar 2:3</em></p>
+            </div>
+            </main>
+          </li>
+          <li class="slide">
+           <img src="images/main_coon_forest_midjourney_v5.png" alt="">
+            <main class="card realistic">
+              <div class="text">
+              <h4>Maine Coon</h4>
+              <p><strong><em>Imagine</em></strong><br>main coon in a large oak tree with Rays of Shimmering Light forestland following a hiker low exposure, analogue camera, 24mm, f18 <br><em>--s 200 --q 5 --c 1 --seed 0043  --ar 3:4 --v 5</em></p>
+            </div>
+            </main>
+          </li>
+          <li class="slide">
+            <img src="images/viking_axe_battle_midjourneyv5.png" alt="">
+            <main class="card realistic">
+              <div class="text">
+              <h4>Viking Blade</h4>
+              <p><strong><em>Imagine</em></strong><br>A hand tightly grips a used axe, its blade facing down, while standing in the center of the image. The man holding the axe is not visible, and the background depicts the aftermath of a head-to-head Viking battle by the shore. Viking ships and water are visible in the distance. The image should have a Viking-inspired aesthetic, with subdued and moody lighting, a gritty composition, and a high-quality finish. <br><em>--s 200 --seed 0044 --ar 3:4 --v 5</em></p>
+            </div>
+            </main>
+          </li>
+        </ul>
+      </div>
+    </section>
+        
+      <!-- CAROUSEL | PEOPLE -->
+    <header class="people">
+      <h1>PEOPLE</h1>
+    </header>
+    <section class="hidden"  aria-label="people">
+      <div class="carousel" data-carousel>
+        <button class="carousel-button left" data-carousel-button="left">
+          <i class="fa-solid fa-chevron-left"></i></ion-icon>
+        </button>
+        <button class="carousel-button right" data-carousel-button="right">
+          <i class="fa-solid fa-chevron-right"></i></ion-icon>
+        </button>
+        <ul data-slides>
+          <li class="slide" data-active>
+            <img
+            src="images/people-snowman.png"
+            alt="A mans face stone cold in the freezing winter"
+            />
+          </l>
+          <li class="slide">
+            <img
+            src="images/people-viking.png"
+            alt="Viking man"
+            />
+          </li>
+          <li class="slide">
+            <img
+            src="images/people-viking1.png"
+            alt="Viking man #2"
+            />
+          </li>
+          <li class="slide">
+            <img
+            src="images/people-zombieman.png"
+            alt="An animated man with a dead face, zombie-like features"
+            />
+          </li>
+          <li class="slide">
+            <img
+            src="images/profile fire and metal.png"
+            alt="An illustration of a burning face and melting metal"
+            />
+        </li>
+      </ul>
+      </div>
+    </section>
 
+    <!-- Icon Library -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+  </body>
 </html>
